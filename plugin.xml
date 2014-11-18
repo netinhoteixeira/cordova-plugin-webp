@@ -22,7 +22,7 @@
 			</feature>
 		</config-file>
 		
-		<source-file src="src/android/pro/francisco/cordova/webp/WebPEncoderDecoder.java" target-dir="src/pro/francisco/cordova/webp"/>
+		<source-file src="src/android/android/pro/francisco/cordova/webp/WebPEncoderDecoder.java" target-dir="src/pro/francisco/cordova/webp"/>
 		<source-file src="src/android/android/backport/webp/WebPFactory.java" target-dir="src/android/backport/webp"/>
 		<source-file src="src/android/libs/arm64-v8a/dwebp" target-dir="libs/arm64-v8a"/>
 		<source-file src="src/android/libs/arm64-v8a/libwebpbackport.so" target-dir="libs/arm64-v8a"/>
