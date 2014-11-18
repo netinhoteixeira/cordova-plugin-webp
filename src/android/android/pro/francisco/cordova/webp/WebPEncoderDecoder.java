@@ -24,6 +24,11 @@ import android.util.Log;
 
 public class WebPEncoderDecoder extends CordovaPlugin {
     
+    private static enum Action {
+        encode,
+        decode
+    }
+
     @Override
     public boolean execute(String actionAsString, JSONArray args, CallbackContext cbc) {
 
@@ -44,39 +49,38 @@ public class WebPEncoderDecoder extends CordovaPlugin {
             return false;
         }
     }
-    
+
     private boolean executeAndPossiblyThrow(Action action, JSONArray args, CallbackContext cbc)
             throws JSONException {
 
         boolean status = true;
         JSONObject o;
-        String dbname;
 
         switch (action) {
 
             case encode:
                 o = args.getJSONObject(0);
-                data = o.getString("data");
-            
+                String data = o.getString("data");
+
                 byte[] imageAsBytes = Base64.decode(data.getBytes(), Base64.DEFAULT);
                 Bitmap selectedBitmap = BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length);
                 byte[] webpImageData = WebPFactory.nativeEncodeBitmap(selectedBitmap, 100);
-            
-                String encodedImage = Base64.encodeToString(webpImageData, Base64.DEFAULT);
-            
-                // Bitmap webpBitmap = WebPFactory.nativeDecodeByteArray(webpImageData, null);
 
+                String encodedImage = Base64.encodeToString(webpImageData, Base64.DEFAULT);
+
+                // Bitmap webpBitmap = WebPFactory.nativeDecodeByteArray(webpImageData, null);
                 // TODO: if the db is open, must put request in the q to close & delete the db
                 //status = this.deleteDatabase(dbname);
-
                 // deleteDatabase() requires an async callback
                 //if (status) {
-                    cbc.success(encodedImage);
+                cbc.success(encodedImage);
                 //} else {
                 //    cbc.error("couldn't delete database");
                 //}
                 break;
         }
-    
-    
+        
+        return status;
+    }
+
 }
