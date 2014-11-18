@@ -7,13 +7,13 @@ var WebPEncoderDecoder = function() {
 };
 
 WebPEncoderDecoder.prototype.encode = function(data, successCallback, errorCallback) {
-    return exec(successCallback, errorCallback, "Camera", "encode", [{
+    return exec(successCallback, errorCallback, "WebPEncoderDecoder", "encode", [{
     	"data": data
     }]);
 };
 
 WebPEncoderDecoder.prototype.decode = function(data, successCallback, errorCallback) {
-    return exec(successCallback, errorCallback, "Camera", "decode", [{
+    return exec(successCallback, errorCallback, "WebPEncoderDecoder", "decode", [{
     	"data": data
     }]);
 };
