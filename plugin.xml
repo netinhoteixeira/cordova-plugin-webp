@@ -9,7 +9,7 @@
 		<engine name="cordova" version="&gt;=3.5.0"/>
 	</engines>
 	
-	<js-module src="www/WebPEncoderDecoder.js" name="WebPEncoderDecoder">
+	<js-module src="www/WebPEncoderDecoder.js" name="webp">
 		<clobbers target="cordova.plugins.webp"/>
 	</js-module>
 	
